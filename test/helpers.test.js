@@ -210,10 +210,15 @@ describe('helpers', function () {
       expect(hlp.convertStringToNumber('1')).to.equal(1);
       expect(hlp.convertStringToNumber('13')).to.equal(13);
       expect(hlp.convertStringToNumber('123413')).to.equal(123413);
+      expect(hlp.convertStringToNumber('.123413')).to.equal(0.123413);
+      expect(hlp.convertStringToNumber('123413.')).to.equal(123413);
     });
     it(s_throw, function () {
       expect(() => hlp.convertStringToNumber(1)).to.throw(Error);
       expect(() => hlp.convertStringToNumber(455)).to.throw(Error);
+      expect(() => hlp.convertStringToNumber('ad')).to.throw(Error);
+      expect(() => hlp.convertStringToNumber('1..4')).to.throw(Error);
+      expect(() => hlp.convertStringToNumber('1.4.1')).to.throw(Error);
       expect(() => hlp.convertStringToNumber([])).to.throw(Error);
       expect(() => hlp.convertStringToNumber({})).to.throw(Error);
       expect(() => hlp.convertStringToNumber(null)).to.throw(Error);
@@ -223,42 +228,42 @@ describe('helpers', function () {
 
   describe('isElemInArray', function () {
     it('should throw because of invalid element', function () {
-      expect(() => hlp.isPrimitiveElInArray({}, ['hello'])).to.throw(Error);
-      expect(() => hlp.isPrimitiveElInArray([], ['hello'])).to.throw(Error);
-      expect(() => hlp.isPrimitiveElInArray(() => 3, ['hello'])).to.throw(Error);
+      expect(() => hlp.isPrimitiveArgInArray({}, ['hello'])).to.throw(Error);
+      expect(() => hlp.isPrimitiveArgInArray([], ['hello'])).to.throw(Error);
+      expect(() => hlp.isPrimitiveArgInArray(() => 3, ['hello'])).to.throw(Error);
     });
     it('should throw because of invalid array', function () {
-      expect(() => hlp.isPrimitiveElInArray(1, [{}])).to.throw(Error);
-      expect(() => hlp.isPrimitiveElInArray(1, [[]])).to.throw(Error);
-      expect(() => hlp.isPrimitiveElInArray(1, [() => 1])).to.throw(Error);
+      expect(() => hlp.isPrimitiveArgInArray(1, [{}])).to.throw(Error);
+      expect(() => hlp.isPrimitiveArgInArray(1, [[]])).to.throw(Error);
+      expect(() => hlp.isPrimitiveArgInArray(1, [() => 1])).to.throw(Error);
     });
     it(sr_true, function () {
-      expect(hlp.isPrimitiveElInArray(1, [1, 4, 5, 5, 35, "hello"])).to.equal(true);
-      expect(hlp.isPrimitiveElInArray("1", [1, 4, null, 5, 35, "hello", "1"])).to.equal(true);
-      expect(hlp.isPrimitiveElInArray("hello", [1, 4, 5, null, 35, "hello"])).to.equal(true);
+      expect(hlp.isPrimitiveArgInArray(1, [1, 4, 5, 5, 35, "hello"])).to.equal(true);
+      expect(hlp.isPrimitiveArgInArray("1", [1, 4, null, 5, 35, "hello", "1"])).to.equal(true);
+      expect(hlp.isPrimitiveArgInArray("hello", [1, 4, 5, null, 35, "hello"])).to.equal(true);
     });
     it(sr_false, function () {
-      expect(hlp.isPrimitiveElInArray(2, [1, 4, 5, 5, 35, "hello"])).to.equal(false);
-      expect(hlp.isPrimitiveElInArray("mom", [1, 4, null, 5, 35, "hello", "1"])).to.equal(false);
-      expect(hlp.isPrimitiveElInArray(undefined, [1, 4, 5, null, 35, "hello"])).to.equal(false);
+      expect(hlp.isPrimitiveArgInArray(2, [1, 4, 5, 5, 35, "hello"])).to.equal(false);
+      expect(hlp.isPrimitiveArgInArray("mom", [1, 4, null, 5, 35, "hello", "1"])).to.equal(false);
+      expect(hlp.isPrimitiveArgInArray(undefined, [1, 4, 5, null, 35, "hello"])).to.equal(false);
     });
   });
 
-  describe('arePrimitiveElsEqual', function () {
+  describe('arePrimitiveArgsEqual', function () {
     it(s_throw, function () {
-      expect(() => hlp.arePrimitiveElsEqual([], {})).to.throw(Error);
-      expect(() => hlp.arePrimitiveElsEqual(null, {})).to.throw(Error);
+      expect(() => hlp.arePrimitiveArgsEqual([], {})).to.throw(Error);
+      expect(() => hlp.arePrimitiveArgsEqual(null, {})).to.throw(Error);
     });
     it(sr_false, function () {
-      expect(hlp.arePrimitiveElsEqual(null, 1)).to.equal(false);
-      expect(hlp.arePrimitiveElsEqual(1.4, 1)).to.equal(false);
-      expect(hlp.arePrimitiveElsEqual(1.4, undefined)).to.equal(false);
+      expect(hlp.arePrimitiveArgsEqual(null, 1)).to.equal(false);
+      expect(hlp.arePrimitiveArgsEqual(1.4, 1)).to.equal(false);
+      expect(hlp.arePrimitiveArgsEqual(1.4, undefined)).to.equal(false);
     });
     it(sr_true, function () {
-      expect(hlp.arePrimitiveElsEqual()).to.equal(true);
-      expect(hlp.arePrimitiveElsEqual(null, null)).to.equal(true);
-      expect(hlp.arePrimitiveElsEqual(1, 1)).to.equal(true);
-      expect(hlp.arePrimitiveElsEqual("hello", "hello")).to.equal(true);
+      expect(hlp.arePrimitiveArgsEqual()).to.equal(true);
+      expect(hlp.arePrimitiveArgsEqual(null, null)).to.equal(true);
+      expect(hlp.arePrimitiveArgsEqual(1, 1)).to.equal(true);
+      expect(hlp.arePrimitiveArgsEqual("hello", "hello")).to.equal(true);
 
     });
   });
