@@ -6,7 +6,7 @@
 
 Run:
 ```bash
-npm install --save hlpj
+npm install --save hlpjs
 ```
 
 Then, in your javascript file: 
@@ -22,9 +22,7 @@ This code *softly* follows the standard set by [node-style-guide](https://github
 
 ## Documentations & Methods 
 
-**NOTE: More details about each method will be added. This work is under progress.**
-
-NOTE: The documentation below will offer examples. However, the documentation in the code is very much more detailed about what the requirements / outcomes of the methods will be. Using an IDE such as IDEA PHPStorm or WebStorm helps.
+**NOTE: More details about each method will be added. This work is under progress but not completed.**
 
 For all of the following methods, assume we called `const hlp = require('hlpjs')`. For each method, I listed the purpose along with the return type (or **`{void}`**) in bold brackets (**`{return type}`**), then parameters, then the usage of the method, and sometimes an example. In case a method throws error, I indicated it with *`[throws]`*.
 
@@ -32,6 +30,7 @@ A couple of definitions:
 - `Any`: This is any type. It can be a `Function`, `Object`, `Array`, `Number`, etc. 
 - `Primitive`: A primitive type. These are `null`, `undefined`, `String`, and `Number`. They are "primitive" because they can be checked for equality with `===` against another primitive.
 
+**NOTE: The documentation below will offer examples. However, the documentation in the code is very much more detailed about what the requirements / outcomes of the methods will be. Using an IDE such as IDEA PHPStorm or WebStorm helps.**
 
 ### Table of Contents for Documentations
 
@@ -173,7 +172,7 @@ Most assert methods have 3 arguments while some of a 4 arguments parameters. All
 
 Assuming we called `const hlp = require('hlpjs')`, here are the methods:
 
-**(`DOCUMENTATION ARE TO BE ADDED`)**
+**(`DOCUMENTATION ARE TO BE ADDED FOR EACH`)**
 
 #### argIsNumber
 ```javascript

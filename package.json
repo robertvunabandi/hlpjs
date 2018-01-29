@@ -1,6 +1,6 @@
 {
   "name": "hlpjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple NodeJS / Javascript backend validators and asserter module",
   "keywords": [
     "test",
