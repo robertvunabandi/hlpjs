@@ -22,7 +22,7 @@ This code *softly* follows the standard set by [node-style-guide](https://github
 
 ## Documentations & Methods 
 
-**NOTE: More details about each method will be added. This work is under progress but not completed.**
+**(`NOTE: More details about each method will be added. This work is under progress but not completed.`)**
 
 For all of the following methods, assume we called `const hlp = require('hlpjs')`. For each method, I listed the purpose along with the return type (or **`{void}`**) in bold brackets (**`{return type}`**), then parameters, then the usage of the method, and sometimes an example. In case a method throws error, I indicated it with *`[throws]`*.
 
