@@ -17,8 +17,7 @@ const hlp = require('hlpjs');
 
 ## Contributing
 
-More details on this are to be added.
-This code *softly* follows the standard set by [node-style-guide](https://github.com/felixge/node-style-guide).
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Documentations & Methods 
 
