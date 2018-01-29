@@ -2,6 +2,22 @@
 
 `hlpjs` is a simple NodeJS / Javascript backend validators and asserter module.
 
+## Installation
+
+```bash
+npm install hlpjs
+```
+or
+```bash
+npm install --save hlpjs
+```
+
+Then, in your javascript file: 
+
+```javascript
+const hlp = require('hlpjs');
+```
+
 ## Contributing
 
 More details on this are to be added.
