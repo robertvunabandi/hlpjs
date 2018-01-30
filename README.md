@@ -2,6 +2,8 @@
 
 `hlpjs` is a simple NodeJS / Javascript backend validators and asserter module.
 
+[![npm version](https://badge.fury.io/js/hlpjs.svg)](https://www.npmjs.com/package/hlpjs)
+
 ## Installation
 
 Run:
