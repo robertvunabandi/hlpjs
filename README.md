@@ -2,6 +2,7 @@
 
 `hlpjs` is a simple NodeJS / Javascript backend validators and asserter module.
 
+[![Build Status](https://travis-ci.org/robertvunabandi/hlpjs.svg?branch=master)](https://travis-ci.org/robertvunabandi/hlpjs)
 [![npm version](https://badge.fury.io/js/hlpjs.svg)](https://www.npmjs.com/package/hlpjs)
 
 ## Installation
