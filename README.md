@@ -24,8 +24,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Documentations & Methods 
 
-**(`NOTE: More details about each method will be added. This work is under progress but not completed.`)**
-
 For all of the following methods, assume we called `const hlp = require('hlpjs')`. For each method, I listed the purpose along with the return type (or **`{void}`**) in bold brackets (**`{return type}`**), then parameters, then the usage of the method, and sometimes an example. In case a method throws error, I indicated it with *`[throws]`*.
 
 A couple of definitions:
@@ -231,7 +229,7 @@ hlp.assert.stringHasLength (str, exp_len, message = null, ErrorInstance = Error)
 ```
 #### stringContainsOnlyNumeric
 **`{void}`** *`[throws]`* Throws an error when `str` is not a String or (principally) when `str` contains non-numeric characters.
-- `str`: Any
+- `str`: String
 ```javascript
 hlp.assert.stringContainsOnlyNumeric (str, message = null, ErrorInstance = Error)
 ```
