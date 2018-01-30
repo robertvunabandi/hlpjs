@@ -171,74 +171,72 @@ Most assert methods have 3 arguments while some of a 4 arguments parameters. All
 
 Assuming we called `const hlp = require('hlpjs')`, here are the methods:
 
-**(`DOCUMENTATION ARE TO BE ADDED FOR EACH`)**
-
 #### argIsNumber
+**`{void}`** *`[throws]`* Throws an error when arg is not a number.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsNumber (arg, message = null, ErrorInstance = null)
 ```
 #### argIsInteger
+**`{void}`** *`[throws]`* Throws an error when arg is not an integer as defined in `hlp.isInteger(...)`.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsInteger (arg, message = null, ErrorInstance = null)
 ```
 #### argIsNull
+**`{void}`** *`[throws]`* Throws an error when arg is not null.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsNull (arg, message = null, ErrorInstance = null)
 ```
 #### argIsNotNull
+**`{void}`** *`[throws]`* Throws an error when arg is null.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsNotNull (arg, message = null, ErrorInstance = null)
 ```
 #### argIsNotUndefined
+**`{void}`** *`[throws]`* Throws an error when arg is undefined.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsNotUndefined (arg, message = null, ErrorInstance = null)
 ```
 #### argIsString
+**`{Boolean}`** *`[throws]`* Throws an error when arg is not a String.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsString (arg, message = null, ErrorInstance = null)
 ```
 #### argIsArray
+**`{void}`** *`[throws]`* Throws an error when arg is not an Array.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsArray (arg, message = null, ErrorInstance = null)
 ```
 #### argIsPrimitive
+**`{void}`** *`[throws]`* Throws an error when arg is not primitive.
+- `arg`: Any
 ```javascript
 hlp.assert.argIsPrimitive(arg, message = null, ErrorInstance = null)
 ```
 #### stringHasLength
+**`{void}`** *`[throws]`* Throws an error when `str` is not a string or (principally) when it does not have length `exp_len`.
+- `str`: String
+- `exp_len`: Integer
 ```javascript
-hlp.assert.stringHasLength (string, exp_len, message = null, ErrorInstance = Error)
+hlp.assert.stringHasLength (str, exp_len, message = null, ErrorInstance = Error)
 ```
 #### stringContainsOnlyNumeric
+**`{void}`** *`[throws]`* Throws an error when `str` is not a String or (principally) when `str` contains non-numeric characters.
+- `str`: Any
 ```javascript
-hlp.assert.stringContainsOnlyNumeric (string, message = null, ErrorInstance = Error)
+hlp.assert.stringContainsOnlyNumeric (str, message = null, ErrorInstance = Error)
 ```
-#### primitivesAreEqual 
+#### primitivesAreEqual
+**`{void}`** *`[throws]`* Throws an error when `prim1` does not equal `prim2`.
+- `prim1`: Primitive 
+- `prim2`: Primitive 
 ```javascript
 hlp.assert.primitivesAreEqual (prim1, prim2, message = null, ErrorInstance = Error)
-```
-#### hasStringLength
-```javascript
-hlp.assert.hasStringLength (string, exp_len)
-```
-#### extendString
-```javascript
-hlp.assert.extendString (desired_length, str_or_num, addition_character = ' ')
-```
-#### containsNonNumeric
-```javascript
-hlp.assert.containsNonNumeric (str)
-```
-#### convertStringToNumber
-```javascript
-hlp.assert.convertStringToNumber (str)
-```
-#### isPrimitiveArgInArray
-```javascript
-hlp.assert.isPrimitiveArgInArray (arg, array)
-```
-#### arePrimitiveElsEqual
-```javascript
-hlp.assert.arePrimitiveElsEqual(prim1, prim2)
 ```
 
