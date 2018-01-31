@@ -22,6 +22,24 @@ describe('helpers', function () {
 
   /* base utils */
 
+  describe('isBoolean', function () {
+    it(sr_true, function () {
+      let bool = false;
+      expect(hlp.isBoolean(false)).to.equal(true);
+      expect(hlp.isBoolean(true)).to.equal(true);
+      expect(hlp.isBoolean(bool)).to.equal(true);
+    });
+    it(sr_false, function () {
+      expect(hlp.isBoolean(undefined)).to.equal(false);
+      expect(hlp.isBoolean(null)).to.equal(false);
+      expect(hlp.isBoolean([])).to.equal(false);
+      expect(hlp.isBoolean({})).to.equal(false);
+      expect(hlp.isBoolean(NaN)).to.equal(false);
+      expect(hlp.isBoolean('a')).to.equal(false);
+      expect(hlp.isBoolean(1.51)).to.equal(false);
+    });
+  });
+
   describe('isNumber', function () {
     it(sr_true, function () {
       expect(hlp.isNumber(1)).to.equal(true);

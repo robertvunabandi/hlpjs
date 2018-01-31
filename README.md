@@ -34,12 +34,12 @@ A couple of definitions:
 
 ### Table of Contents for Documentations
 
-`This will be added in the near future`
+`This will be added in the future if REALLY needed`
 
 ### Regular Methods
 
 #### throw
-**`{void}`** Simply throw an error with constructor ErrorInstance with the given message. 
+**`{void}`** Throw an error with constructor ErrorInstance with the given message. 
 - `message`: String.
 - `ErrorInstance`: Error constructor to throw.
 
@@ -47,8 +47,18 @@ A couple of definitions:
 hlp.throw (message, ErrorInstance = Error)
 ```
 
+
+#### isBoolean
+**`{Boolean}`** Check if the `arg` is a Boolean. 
+- `arg`: Any.
+
+```javascript
+hlp.isBoolean (arg)
+```
+
+
 #### isNumber
-**`{Boolean}`** Check if the argument is a usable Javascript `Number` that is not `NaN`. 
+**`{Boolean}`** Check if the `arg` is a usable Javascript `Number` that is not `NaN`. 
 - `arg`: Any.
 
 ```javascript
@@ -97,7 +107,7 @@ hlp.isArray (arg)
 hlp.isPrimitive (arg)
 ```
 #### Primitive
-**`{void}`** *`[throws]`* Create an instance of `Primitive` type. *This is not meant to be used.* It will throw an error if `arg` is not `Primitive`.
+**`{void}`** *`[throws]`* Create an instance of `Primitive` type. It will throw an error if `arg` is not `Primitive`. *This is not meant to be used. It was created to be used on jsdocs.* 
 - `arg`: Any.
 ```javascript
 hlp.Primitive(arg)
@@ -112,7 +122,7 @@ hlp.hasStringLength (str, exp_len)
 ```
 
 #### extendString
-**`{String}`** *`[throws]`* Takes `str_or_num`, converts it into `String`, then expands it (if needed) so that the length of the string is equal to the desired length by appending `additional_character` at the beginning of the string multiple times. This throws if any of the parameter types is invalid.
+**`{String}`** *`[throws]`* Takes `str_or_num`, converts it into `String`, then expands it (if needed) so that the length of the string is equal to `desired_length` by appending `additional_character` at the beginning of the string multiple times. This throws if any of the parameter types is invalid.
 - `str_or_num`: String | Number
 - `desired_length`: Integer
 - `addition_character`: String, *this must be of length 1.*
@@ -124,30 +134,46 @@ Examples:
 hlp.extendString (5, 'cone'); // ' con'
 hlp.extendString (5, 'cone', 0); // '0cone'
 hlp.extendString (4, 'cone'); // 'cone'
+hlp.extendString (4, 'conecodecode'); // 'conecodecode'
 hlp.extendString (4, 'e', 'o'); // 'oooe'
 ```
 
 #### containsNonNumeric
-**`{Boolean}`** *`[throws]`* Checks if `str` contains non-numeric characters (anything other than 0,1,2,3,4,5,6,7,8,9). This throws if any of the parameter types is invalid. 
+**`{Boolean}`** *`[throws]`* Checks if `str` contains non-numeric characters (anything other than 0,1,2,3,4,5,6,7,8,9). This throws if any of the parameter types is invalid.
 - `str`: String
 ```javascript
 hlp.containsNonNumeric (str)
 ```
+Examples: 
+```javascript
+hlp.containsNonNumeric ('cone'); // true
+hlp.containsNonNumeric ('124'); // false
+hlp.containsNonNumeric ('12.4'); // true
+```
+
 #### convertStringToNumber
-**`{Number}`** *`[throws]`* Converts the `str` into a number. This throws if any of the parameter types is invalid. It also throw if the string contains non-numeric characters (as that cannot be converted) except for a point (i.e. `.`).
+**`{Number}`** *`[throws]`* Converts `str` into a number.  This throws if the string contains non-numeric characters (as that cannot be converted) except for up to one point (i.e. `.`). This throws if any of the parameter types is invalid.
 - `str`: string
 ```javascript
 hlp.convertStringToNumber (str)
 ```
 #### isPrimitiveArgInArray
-**`{Boolean}`** *`[throws]`* Converts the `str`. This throws if any of the parameter types is invalid. `arr` needs to be an array of `Primitive`.
+**`{Boolean}`** *`[throws]`* Checks if `arg` is in `arr`. `arr` needs to be an array of `Primitive`. This throws if any of the parameter types is invalid. 
 - `primitive`: Primitive
 - `arr`: Array<Primitive>
 ```javascript
 hlp.isPrimitiveArgInArray (primitive, arr)
 ```
+Examples: 
+```javascript
+hlp.isPrimitiveArgInArray ('cone', ['cone']); // true
+hlp.isPrimitiveArgInArray ('conee', ['cone']); // false
+hlp.isPrimitiveArgInArray ({}, ['cone']); // throws error
+hlp.isPrimitiveArgInArray ('cone', [{}]); // throws error
+```
+
 #### arePrimitiveArgsEqual
-**`{Boolean}`** *`[throws]`* Checks if the two primitives are equal. This throws if any of the parameter types is invalid. 
+**`{Boolean}`** *`[throws]`* Checks if the two primitives are equal. This throws if any of the parameter types is invalid.
 - `primitive1`: Primitive
 - `primitive2`: Primitive
 ```javascript
@@ -156,7 +182,7 @@ hlp.arePrimitiveArgsEqual (primitive1, primitive2)
 
 ### Asserters
 
-These method basically throw an error when the condition to be asserted is not met. These methods are found under the key `assert`. For example, 
+These method throw errors when the condition to be asserted is not met. These methods are found under the key `assert`. For example, 
 ```javascript
 const hlp = require('hlpjs');
 hlp.assert.argIsInteger('14'); // throws an error
@@ -170,71 +196,78 @@ Most assert methods have 3 arguments while some of a 4 arguments parameters. All
     `ErrorInstance.prototype instanceof Error` is made prior to throwing this.
     In case it's not, it will fall back to `Error`. 
 
+All asserter methods throw an error when the expected argument type is invalid.
+
 Assuming we called `const hlp = require('hlpjs')`, here are the methods:
 
 #### argIsNumber
-**`{void}`** *`[throws]`* Throws an error when arg is not a number.
+**`{void}`** *`[throws]`* Throws when `arg` is not a number.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsNumber (arg, message = null, ErrorInstance = null)
 ```
 #### argIsInteger
-**`{void}`** *`[throws]`* Throws an error when arg is not an integer as defined in `hlp.isInteger(...)`.
+**`{void}`** *`[throws]`* Throws when `arg` is not an integer as defined in `hlp.isInteger(...)`.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsInteger (arg, message = null, ErrorInstance = null)
 ```
 #### argIsNull
-**`{void}`** *`[throws]`* Throws an error when arg is not null.
+**`{void}`** *`[throws]`* Throws when `arg` is not null.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsNull (arg, message = null, ErrorInstance = null)
 ```
+
 #### argIsNotNull
-**`{void}`** *`[throws]`* Throws an error when arg is null.
+**`{void}`** *`[throws]`* Throws when `arg` is null.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsNotNull (arg, message = null, ErrorInstance = null)
 ```
+
 #### argIsNotUndefined
-**`{void}`** *`[throws]`* Throws an error when arg is undefined.
+**`{void}`** *`[throws]`* Throws when `arg` is undefined.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsNotUndefined (arg, message = null, ErrorInstance = null)
 ```
+
 #### argIsString
-**`{Boolean}`** *`[throws]`* Throws an error when arg is not a String.
+**`{Boolean}`** *`[throws]`* Throws when `arg` is not a String.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsString (arg, message = null, ErrorInstance = null)
 ```
+
 #### argIsArray
-**`{void}`** *`[throws]`* Throws an error when arg is not an Array.
+**`{void}`** *`[throws]`* Throws when `arg` is not an Array.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsArray (arg, message = null, ErrorInstance = null)
 ```
+
 #### argIsPrimitive
-**`{void}`** *`[throws]`* Throws an error when arg is not primitive.
+**`{void}`** *`[throws]`* Throws when `arg` is not primitive as defined with `hlp.isPrimitive(...)`.
 - `arg`: Any
 ```javascript
 hlp.assert.argIsPrimitive(arg, message = null, ErrorInstance = null)
 ```
 #### stringHasLength
-**`{void}`** *`[throws]`* Throws an error when `str` is not a string or (principally) when it does not have length `exp_len`.
+**`{void}`** *`[throws]`* Throws when `str` does not have length `exp_len`.
 - `str`: String
 - `exp_len`: Integer
 ```javascript
 hlp.assert.stringHasLength (str, exp_len, message = null, ErrorInstance = Error)
 ```
 #### stringContainsOnlyNumeric
-**`{void}`** *`[throws]`* Throws an error when `str` is not a String or (principally) when `str` contains non-numeric characters.
+**`{void}`** *`[throws]`* Throws when `str` contains non-numeric characters.
 - `str`: String
 ```javascript
 hlp.assert.stringContainsOnlyNumeric (str, message = null, ErrorInstance = Error)
 ```
 #### primitivesAreEqual
-**`{void}`** *`[throws]`* Throws an error when `prim1` does not equal `prim2`.
+**`{void}`** *`[throws]`* Throws when `prim1` does not equal `prim2`.
 - `prim1`: Primitive 
 - `prim2`: Primitive 
 ```javascript
