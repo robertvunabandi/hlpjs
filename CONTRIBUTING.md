@@ -16,7 +16,7 @@ This code *softly* follows the standard set by [node-style-guide](https://github
     - Use cameCase for naming methods/functions
     - Make the first letter Uppercase in case it's a class declaration (constructor). An example is `hlp.Primitive`.
     - Use UPPERCASE for constants.
-- Use single quotes unless using \`\` to insert a `String` within the text. For example, ``${arg} is not a String``.
+- Use single quotes unless using \`\` to insert a `String` within the text. For example, `\`${arg} is not a String\``.
 - Unless it makes it clearer, there's no need for [multi-line ternary operators](https://github.com/felixge/node-style-guide#use-multi-line-ternary-operator).
 - No need for [descriptive conditions](https://github.com/felixge/node-style-guide#use-descriptive-conditions) unless it makes the line exceed 80 character as long as it's clear enough what it's doing.
 - Ideally, have a maximum of 10-15 lines per functions. **No more than 30 lines!** 
